@@ -35,4 +35,10 @@ export default {
       },
     ]
   },
+
+  webpack: (config) => {
+    // config.devServer = {...config.devServer, inline: false}
+
+    return config
+  }
 }
