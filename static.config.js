@@ -1,9 +1,12 @@
 import axios from 'axios'
 
 export default {
+  siteRoot: 'https://michael.ski', // Optional, but necessary for the sitemap.xml
+
   getSiteProps: () => ({
     title: 'Michael Ski',
   }),
+
   getRoutes: async () => {
     const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
     return [
