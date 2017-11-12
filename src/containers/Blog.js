@@ -1,6 +1,7 @@
 import React from 'react'
 import { getRouteProps, Router, Link } from 'react-static'
 //
+import FlexBox from 'flexbox-react'
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText, ListItemAvatar } from 'material-ui/List';
 import PostIcon from 'material-ui-icons/LibraryBooks'
@@ -30,15 +31,24 @@ const PostLink = ({id, title}) => (
   </Link>
 )
 
-export default getRouteProps(({ posts }) => (
-  <div>
+const Blog = getRouteProps(({ classes, posts }) => (
+  <FlexBox flexDirection="column" alignItems="center">
     <h1>Topics of Various Interest</h1>
     <br />
-    All Topics:
-    <List>
+    <h3>All Topics:</h3>
+    <List className={classes.list}>
       {posts.map(post => (
         <PostLink key={post.id} id={post.id} title={post.attributes.title} />
       ))}
     </List>
-  </div>
+  </FlexBox>
 ))
+
+const styles = theme => ({
+  list: {
+    width: 800,
+    maxWidth: 800
+  }
+})
+
+export default withStyles(styles)(Blog)
