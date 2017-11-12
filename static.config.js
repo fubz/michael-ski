@@ -1,4 +1,9 @@
 import axios from 'axios'
+axios.defaults.baseURL = 'https://site-api.datocms.com'
+axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.API_TOKEN}`;
+axios.defaults.headers.post['Accept'] = 'application/json';
+
+const postsUrl = `/items?filter[type]=17345`
 
 export default {
   siteRoot: 'https://michael.ski', // Optional, but necessary for the sitemap.xml
@@ -8,7 +13,10 @@ export default {
   }),
 
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const response = await axios.get(postsUrl)
+    console.log('posts response', response.data)
+    const posts = response.data.data
+    console.log('what is', Object.keys(posts))
     return [
       {
         path: '/',
@@ -40,8 +48,8 @@ export default {
   },
 
   webpack: (config) => {
-    // config.devServer = {...config.devServer, inline: false}
-
+    config.devServer = {...config.devServer, inline: false}
+    config.devtool = 'cheap-module-source-map'
     return config
   }
 }
