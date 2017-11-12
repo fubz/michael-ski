@@ -5,15 +5,9 @@ import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText, ListItemAvatar } from 'material-ui/List';
 import PostIcon from 'material-ui-icons/LibraryBooks'
 import ShareIcon from 'material-ui-icons/Share'
-import Avatar from 'material-ui/es/Avatar/Avatar'
-import IconButton from 'material-ui/es/IconButton/IconButton'
-import ListItemSecondaryAction from 'material-ui/es/List/ListItemSecondaryAction'
-import Button from 'material-ui/es/Button/Button'
-
-const handleClick = (event) => {
-  console.log('hc', event.target)
-
-}
+import Avatar from 'material-ui/Avatar/Avatar'
+import IconButton from 'material-ui/IconButton/IconButton'
+import ListItemSecondaryAction from 'material-ui/List/ListItemSecondaryAction'
 
 const PostLink = ({id, title}) => (
   <Link to={`/blog/post/${id}/`} >

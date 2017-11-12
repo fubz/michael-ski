@@ -47,9 +47,27 @@ export default {
     ]
   },
 
-  webpack: (config) => {
-    config.devServer = {...config.devServer, inline: false}
-    config.devtool = 'cheap-module-source-map'
-    return config
-  }
+  // webpack: [(config, {defaultLoaders}) => {
+  //   // console.log('current webpack config:', JSON.stringify(config))
+  //   // config.devServer = {...config.devServer, inline: false}
+  //   // config.devtool = 'cheap-module-source-map'
+  //
+  //
+  //   config.module.rules = [{
+  //     oneOf: [
+  //       { test: /\.(js|jsx)$/,
+  //         loader: 'babel-loader',
+  //         exclude: /node_modules/
+  //       },
+  //       defaultLoaders.cssLoader,
+  //       defaultLoaders.fileLoader,
+  //     ]
+  //   }]
+  //
+  //   return config
+  // },
+  //   config => {
+  //     console.log('webpack config:', JSON.stringify(config.module)) // Log out the final set of rules
+  //   }
+  // ]
 }
